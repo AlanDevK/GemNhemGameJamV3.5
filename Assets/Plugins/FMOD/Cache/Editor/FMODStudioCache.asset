@@ -15,14 +15,10 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-<<<<<<< Updated upstream
-  lastModified: 639233081391797351
-=======
-  lastModified: 639233100286153210
->>>>>>> Stashed changes
+  lastModified: 639233202374582611
   FileSizes:
   - Name: Desktop
-    Value: 724
+    Value: 766
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -39,17 +35,14 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: -3407905222364225876}
   - {fileID: 1534244149882325210}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 317176783012859786}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1534244149882325210}
   StringsBanks:
   - {fileID: -3407905222364225876}
   cacheVersion: 131860
-<<<<<<< Updated upstream
-  cacheTime: 639233081391797351
-  SerializableEventsDict: []
-=======
   cacheTime: 639233100286153210
   SerializableEventsDict:
   - key: event:/tesst
@@ -81,7 +74,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
->>>>>>> Stashed changes
 --- !u!114 &1534244149882325210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,12 +89,8 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-<<<<<<< Updated upstream
-  lastModified: 639233081391787378
-=======
-  lastModified: 639233100286137022
->>>>>>> Stashed changes
+  lastModified: 639233204910270025
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 1612
   Exists: 1
