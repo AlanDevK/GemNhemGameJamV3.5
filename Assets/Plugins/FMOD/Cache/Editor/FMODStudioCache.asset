@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639233210486399744
+  lastModified: 639233081391797351
   FileSizes:
   - Name: Desktop
     Value: 766
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639233210486394352
+  lastModified: 639233081391787378
   FileSizes:
   - Name: Desktop
     Value: 1612
