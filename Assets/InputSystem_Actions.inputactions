@@ -192,6 +192,9 @@
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "",
                     "id": "c3c06398-fb46-4c07-9a3e-c7cd4f669314",
@@ -322,6 +325,11 @@
                     "processors": "",
                     "groups": "",
                     "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
