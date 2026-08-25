@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639233210486399744
+  lastModified: 639232722899135633
   FileSizes:
   - Name: Desktop
     Value: 766
@@ -33,21 +33,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: 6322586542461662399}
-  - {fileID: 6167137608749020228}
+  - {fileID: -3407905222364225876}
+  - {fileID: 1534244149882325210}
   EditorEvents:
-  - {fileID: 3563670477492934080}
+  - {fileID: 317176783012859786}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 6167137608749020228}
+  - {fileID: 1534244149882325210}
   StringsBanks:
-  - {fileID: 6322586542461662399}
+  - {fileID: -3407905222364225876}
   cacheVersion: 131860
-  cacheTime: 639233210486399744
+  cacheTime: 639232722899135633
   SerializableEventsDict:
   - key: event:/tesst
     index: 0
---- !u!114 &3563670477492934080
+--- !u!114 &317176783012859786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
     Data3: -1926869117
     Data4: 1463428340
   Banks:
-  - {fileID: 6167137608749020228}
+  - {fileID: 1534244149882325210}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &6167137608749020228
+--- !u!114 &1534244149882325210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,28 +89,8 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639233210486394352
+  lastModified: 639232722899120598
   FileSizes:
   - Name: Desktop
     Value: 1612
-  Exists: 1
---- !u!114 &6322586542461662399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639233210486399744
-  FileSizes:
-  - Name: Desktop
-    Value: 766
   Exists: 1
