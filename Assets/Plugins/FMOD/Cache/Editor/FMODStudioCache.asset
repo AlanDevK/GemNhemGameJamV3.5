@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639232655664731745
+  lastModified: 639232723701292016
   FileSizes:
   - Name: Desktop
     Value: 724
@@ -42,7 +42,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3407905222364225876}
   cacheVersion: 131860
-  cacheTime: 639232655664731745
+  cacheTime: 639232723701292016
   SerializableEventsDict: []
 --- !u!114 &1534244149882325210
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639232655664731745
+  lastModified: 639232723701291446
   FileSizes:
   - Name: Desktop
     Value: 1074
