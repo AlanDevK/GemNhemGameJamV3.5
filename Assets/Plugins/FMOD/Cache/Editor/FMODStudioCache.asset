@@ -43,10 +43,8 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3407905222364225876}
   cacheVersion: 131860
-  cacheTime: 639233210486399744
-  SerializableEventsDict:
-  - key: event:/tesst
-    index: 0
+  cacheTime: 639232948158570981
+  SerializableEventsDict: []
 --- !u!114 &1534244149882325210
 MonoBehaviour:
   m_ObjectHideFlags: 0
