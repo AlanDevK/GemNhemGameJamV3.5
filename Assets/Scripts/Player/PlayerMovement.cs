@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input References")]
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference dashActionReference;
-    [SerializeField] private InputActionReference interactActionReference;
-    [SerializeField] private InputActionReference CrouchActionReference;
+    [SerializeField] private InputActionReference abilityActionReference;
 
     private Rigidbody2D rb;
     private Vector2 movementInput;
