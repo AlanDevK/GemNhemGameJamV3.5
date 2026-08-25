@@ -80,10 +80,10 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: 9072707016594007060}
-  - {fileID: -7452170202369504366}
+  - {fileID: -3407905222364225876}
+  - {fileID: 1534244149882325210}
   EditorEvents:
-  - {fileID: -5903115961520045924}
+  - {fileID: 317176783012859786}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7452170202369504366}
