@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 996876248}
   m_Layer: 0
   m_Name: DataCenter
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   objectName: realComtutar
+  hackingManager: {fileID: 0}
   interactionMessage: "\u0110\xE3 t\u01B0\u01A1ng t\xE1c th\xE0nh c\xF4ng v\u1EDBi
     thi\u1EBFt b\u1ECB n\xE0y!"
 --- !u!1 &1024154922
@@ -697,7 +698,7 @@ GameObject:
   - component: {fileID: 1024154927}
   m_Layer: 0
   m_Name: RealComtutar
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,6 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   objectName: realComtutar
+  hackingManager: {fileID: 0}
   interactionMessage: "\u0110\xE3 t\u01B0\u01A1ng t\xE1c th\xE0nh c\xF4ng v\u1EDBi
     thi\u1EBFt b\u1ECB n\xE0y!"
 --- !u!1660057539 &9223372036854775807

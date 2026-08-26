@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7449936418537293956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: 
+  lastModified: 639233488648005085
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-3407905222364225876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,6 +53,7 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 6322586542461662399}
   - {fileID: 6167137608749020228}
+  - {fileID: -7449936418537293956}
   EditorEvents:
   - {fileID: 3563670477492934080}
   EditorParameters: []
@@ -43,8 +62,10 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 6322586542461662399}
   cacheVersion: 131860
-  cacheTime: 639233081391797351
-  SerializableEventsDict: []
+  cacheTime: 639233488648005085
+  SerializableEventsDict:
+  - key: event:/tesst
+    index: 0
 --- !u!114 &1534244149882325210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +101,7 @@ MonoBehaviour:
   Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639233210486399744
+  lastModified: 639233488648005085
   FileSizes:
   - Name: Desktop
     Value: 766
