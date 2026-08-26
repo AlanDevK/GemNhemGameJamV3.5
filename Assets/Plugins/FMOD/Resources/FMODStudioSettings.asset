@@ -477,9 +477,10 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - 
+  - Master
   Banks:
   - Master
+  - Master.strings
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

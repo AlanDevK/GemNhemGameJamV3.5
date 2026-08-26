@@ -50,9 +50,6 @@ public class HackingMinigameManager : MonoBehaviour
     [ContextMenu("Start Minigame")]
     public void StartMinigame()
     {
-        uiController.timer.gameObject.SetActive(true);
-        uiController.panelRoot.SetActive(true);
-        uiController.nodesContainer.gameObject.SetActive(true);
         _currentRound = 0;
         _isActive = true;
         uiController.ShowUI(true);

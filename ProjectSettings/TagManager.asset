@@ -7,17 +7,18 @@ TagManager:
   - Interactable
   - Walls
   - Enemy
+  - Borders
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unphasable Walls
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Player
+  - Dashing
+  - Interactable
   - 
   - 
   - 

@@ -1,19 +1,38 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target; // Player transform
-    [SerializeField] private float smoothSpeed = 5f; // Follow smoothness
-    [SerializeField] private Vector3 offset = new Vector3(0f, 0f, -10f); // Camera offset (Z should be negative in 2D)
+    [SerializeField] private Transform player; // Player transform
+    float cameraDistance = 3.5f;
+    [SerializeField] InputActionReference aimAction;
 
-    private void LateUpdate()
+    Camera mainCam;
+    void Awake()
     {
-        if (target == null) return;
+        mainCam = Camera.main;
+    }
+    void OnEnable()
+    {
+        if (aimAction!= null) aimAction.action.Enable();
+    }
+    void OnDisable()
+    {
+        if (aimAction != null) aimAction.action.Disable();
+    }
+    void Update()
+    {
+        if (player == null || mainCam == null || aimAction == null) return;
+        Vector3 mouseScreenPos = aimAction.action.ReadValue<Vector2>();
+        Vector2 viewportPos = mainCam.ScreenToViewportPoint(mouseScreenPos);
+        viewportPos = (viewportPos * 2f) - Vector2.one;
 
-        // Calculate target position with offset
-        Vector3 desiredPosition = target.position + offset;
-        
-        // Smoothly interpolate towards the target position
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        float max = 0.9f;
+        if (Mathf.Abs(viewportPos.x) > max || Mathf.Abs(viewportPos.y) > max)
+        {
+            viewportPos = viewportPos.normalized * max;
+        }
+        Vector3 mouseOffset = new Vector3(viewportPos.x, viewportPos.y, 0f) * cameraDistance;
+        transform.position = player.position + mouseOffset;
     }
 }

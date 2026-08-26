@@ -15,12 +15,6 @@ public class HackingUIController : MonoBehaviour
 
     private readonly List<HackingStepNode> _activeNodes = new();
 
-    void Start(){
-        timer.gameObject.SetActive(false);
-        panelRoot.SetActive(false);
-        nodesContainer.gameObject.SetActive(false);
-    }
-
     void Update(){
         if (gameManager != null){
             if (gameManager._remainingTime > 0){
@@ -29,8 +23,11 @@ public class HackingUIController : MonoBehaviour
         }
     }
 
-    public void ShowUI(bool isVisible) => panelRoot.SetActive(isVisible);
-
+    public void ShowUI(bool isVisible){
+        panelRoot.SetActive(isVisible);
+        timer.gameObject.SetActive(isVisible);
+        nodesContainer.gameObject.SetActive(isVisible);
+    }
     // public void UpdateTimer(float normalizedTime)
     // {
     //     if (timerSlider != null)

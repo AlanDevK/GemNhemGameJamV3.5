@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class PlayerInteractor : MonoBehaviour
 {
     [Header("Input Configuration")]
-    [SerializeField] private InputActionReference interactAction; 
+    [SerializeField] private InputActionReference interactAction;
+    [SerializeField] float interactRange = 2f;
+    [SerializeField] LayerMask interactLayer;
 
     private List<InteractableObject> objectsInRange = new List<InteractableObject>();
     private InteractableObject closestObject;
@@ -30,63 +33,38 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        FindClosestInteractable();
+        if (interactAction.action.IsPressed())
+        {
+            Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange);
+            foreach (Collider2D collider in colliderArray)
+            {
+                if (collider.TryGetComponent(out InteractableObject interactableObject)) interactableObject.Interact();
+            }
+        }
     }
 
-    private void FindClosestInteractable()
+    public InteractableObject GetInteractableObject()
     {
-        if (objectsInRange.Count == 0)
-        {
-            closestObject = null;
-            return;
-        }
-
-        float minDistance = float.MaxValue;
-        InteractableObject nearest = null;
-
-        foreach (var obj in objectsInRange)
-        {
-            if (obj == null) continue;
-            
-            float distance = Vector2.Distance(transform.position, obj.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                nearest = obj;
-            }
-        }
-
-        if (closestObject != nearest)
-        {
-            closestObject = nearest;
-            if (closestObject != null)
-            {
-                Debug.Log("Đang đứng gần nhất: " + closestObject.objectName + " - Nhấn 'F' để tương tác.");
-            }
-        }
+        Collider2D interactableCollider = Physics2D.OverlapCircle(transform.position, interactRange,interactLayer);
+        if (interactableCollider.TryGetComponent(out InteractableObject interactableObject)) return interactableObject;
+        return null;
     }
 
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        InteractableObject interactable = collision.GetComponent<InteractableObject>();
-        if (interactable != null && !objectsInRange.Contains(interactable))
+        if (collision.TryGetComponent(out InteractableObject interactableObject))
         {
-            objectsInRange.Add(interactable);
+            collision.gameObject.GetComponent<InteractableObject>().interactionButton.Show();
         }
     }
 
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        InteractableObject interactable = collision.GetComponent<InteractableObject>();
-        if (interactable != null && objectsInRange.Contains(interactable))
+        if (collision.TryGetComponent(out InteractableObject interactableObject))
         {
-            objectsInRange.Remove(interactable);
-            if (closestObject == interactable)
-            {
-                closestObject = null;
-            }
+            collision.gameObject.GetComponent<InteractableObject>().interactionButton.Hide();
         }
     }
 

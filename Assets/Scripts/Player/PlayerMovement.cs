@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,15 +13,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashCooldown = 1f;
 
+    [Header("Layers")]
+    [SerializeField] LayerMask unphasableLayer;
+    [SerializeField] LayerMask enemiesLayer;
+    [SerializeField] int dashingLayerIndex = 8;
+    int originalLayerIndex;
+
     [Header("Combat & Aiming Settings")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.2f; // Time delay between shots
 
+    [Header("Slow Movement")]
+    [SerializeField] Color shiftColor;
+    [SerializeField] float slowMoveSpeed;
+
     [Header("Input References")]
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference dashActionReference;
     [SerializeField] private InputActionReference fireActionReference;
+    [SerializeField] InputActionReference slowMovementReference;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -29,12 +42,12 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimeLeft;
     private float dashCooldownTimer;
     private float fireTimer;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         rb.freezeRotation = true; 
+        originalLayerIndex = gameObject.layer;
     }
 
     private void OnEnable()
@@ -101,16 +114,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashCooldownTimer <= 0 && !isDashing)
         {
-            StartDash();
+            StartCoroutine(Dash());
         }
-    }
+    } 
 
-    private void StartDash()
+    IEnumerator Dash()
     {
         isDashing = true;
         dashTimeLeft = dashDuration;
         dashCooldownTimer = dashCooldown;
-
+        gameObject.layer = dashingLayerIndex;
         Vector2 dashDir = Vector2.up;
         if (mainCamera != null && Mouse.current != null)
         {
@@ -120,8 +133,11 @@ public class PlayerMovement : MonoBehaviour
         }
         
         rb.linearVelocity = dashDir * dashSpeed;
+        yield return new WaitForSeconds(dashDuration);
+        rb.linearVelocity = Vector2.zero;
+        gameObject.layer = originalLayerIndex;
+        isDashing = false;
     }
-
     private void Shoot()
     {
         if (bulletPrefab != null && firePoint != null)
