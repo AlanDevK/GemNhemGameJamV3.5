@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6087971554639011196
+--- !u!114 &-6993258339379793598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: -1926869117
     Data4: 1463428340
   Banks:
-  - {fileID: 3362469414720963090}
+  - {fileID: -5269184892511303641}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -27,7 +27,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4876292736599767997
+--- !u!114 &-5269184892511303641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639233088398784756
+  FileSizes:
+  - Name: Desktop
+    Value: 1612
+  Exists: 1
+--- !u!114 &-1071031477641174322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +66,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 766
-  Exists: 0
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,72 +80,17 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: -4876292736599767997}
-  - {fileID: 3362469414720963090}
+  - {fileID: -1071031477641174322}
+  - {fileID: -5269184892511303641}
   EditorEvents:
-  - {fileID: -6087971554639011196}
+  - {fileID: -6993258339379793598}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 3362469414720963090}
+  - {fileID: -5269184892511303641}
   StringsBanks:
-  - {fileID: -4876292736599767997}
+  - {fileID: -1071031477641174322}
   cacheVersion: 131860
-<<<<<<< HEAD
-  cacheTime: 639233488648005085
-  SerializableEventsDict:
-  - key: event:/tesst
-    index: 0
---- !u!114 &1534244149882325210
-=======
   cacheTime: 639233088398785527
   SerializableEventsDict:
   - key: event:/tesst
     index: 0
---- !u!114 &3362469414720963090
->>>>>>> f34a207 (Adding SuicideEnemy in Enemy&CameraFollow scene. Also pushing,pulling and syncing LibreSans fallback font, FMODStudioCache, indexLayout and vcs)
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-<<<<<<< HEAD
-  lastModified: 639233488648005085
-=======
-  lastModified: 639233088398784756
->>>>>>> f34a207 (Adding SuicideEnemy in Enemy&CameraFollow scene. Also pushing,pulling and syncing LibreSans fallback font, FMODStudioCache, indexLayout and vcs)
-  FileSizes:
-  - Name: Desktop
-    Value: 1612
-  Exists: 1
-<<<<<<< HEAD
---- !u!114 &9072707016594007060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD Projects/Insurgency/InsurgencySoundDesign/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639233488648005085
-  FileSizes:
-  - Name: Desktop
-    Value: 766
-  Exists: 1
-=======
->>>>>>> f34a207 (Adding SuicideEnemy in Enemy&CameraFollow scene. Also pushing,pulling and syncing LibreSans fallback font, FMODStudioCache, indexLayout and vcs)
