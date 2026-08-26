@@ -1,4 +1,4 @@
-public enum HackingInputDirection{
+public enum HackingDirection{
     Up,
     Down,
     Left,
