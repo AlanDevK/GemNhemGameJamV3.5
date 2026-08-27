@@ -7,4 +7,5 @@
   <Project Path="FMODUnityHaptics.csproj" />
   <Project Path="NavMeshPlusEditor.csproj" />
   <Project Path="FMODUnityResonance.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>

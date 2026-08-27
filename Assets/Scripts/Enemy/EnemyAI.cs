@@ -107,7 +107,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (agent == null  ||  !agent.isOnNavMesh) return;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        Vector2 toPlayer = ((Vector2)player.position - (Vector2)transform.position);
+        Vector2 toPlayer = ((Vector2)player.position - (Vector2)transform.position); 
 
         strafeTimer += Time.deltaTime;
         if (strafeTimer >= strafeChangeInterval)

@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System.Collections;
-using System.Collections.Generic;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     bool _isPlayingDialogue = false;
     [SerializeField] GameObject dialogueArea;
+    public event Action OnDialogueComplete;
 
     int index;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +25,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (continueDialogueAction.action.IsPressed() && !_isPlayingDialogue){
+        if (continueDialogueAction.action.WasPressedThisFrame() && !_isPlayingDialogue){
             if (textComponent.text == lines[index]) {
                 NextLine();
             }
@@ -55,6 +56,7 @@ public class Dialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         } else{
+            OnDialogueComplete?.Invoke();
             gameObject.SetActive(false);
             dialogueArea.SetActive(false);
         }
