@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Combat & Aiming Settings")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireRate = 0.2f; // Time delay between shots
+    [SerializeField] private float fireRate = 0.2f;
 
     [Header("Screen Shake")]
     [SerializeField] float recoilForce = 0.05f;
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashCooldownTimer;
     private float fireTimer;
     bool canShoot = true;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -95,11 +96,9 @@ public class PlayerMovement : MonoBehaviour
         movementInput = moveActionReference.action.ReadValue<Vector2>();
         RotateTowardsMouse();
 
-        // Cooldowns
         if (dashCooldownTimer > 0) dashCooldownTimer -= Time.deltaTime;
         if (fireTimer > 0) fireTimer -= Time.deltaTime;
 
-        // Continuous shooting when holding the fire button
         if (fireActionReference != null && fireActionReference.action.IsPressed() && fireTimer <= 0 && canShoot)
         {
             Shoot();
@@ -122,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
             flashTimer += Time.deltaTime;
         }
     }
-    // Rotate player to face the mouse cursor
+
     private void RotateTowardsMouse()
     {
         if (mainCamera == null || Mouse.current == null) return;
@@ -205,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 1f;
         isHitStopping = false;
     }
+
     private void Shoot()
     {
         if (bulletPrefab != null && firePoint != null)
@@ -255,6 +255,7 @@ public class PlayerMovement : MonoBehaviour
         sr.color = originalColor;
         isInvincible = false;
     }
+
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
