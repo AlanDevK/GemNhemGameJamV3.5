@@ -105,9 +105,10 @@ GameObject:
   - component: {fileID: 384156848612853724}
   - component: {fileID: 1111411566419831168}
   - component: {fileID: 8981847630413881915}
-  m_Layer: 0
+  - component: {fileID: 7669260957068365271}
+  m_Layer: 10
   m_Name: SquareEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,13 +204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   moveSpeed: 3
+  attackStoppingDistance: 4
+  retreatDistance: 2
+  strafeChangeInterval: 2
+  navMeshSampleRadius: 2
   enemyBulletPrefab: {fileID: 2452075255294448920, guid: 36155fab2943699ad9b1a8933e900de3, type: 3}
   firePoints:
   - {fileID: 3288405505080917463}
   - {fileID: 1453808090806158934}
   - {fileID: 3170176171940461809}
   - {fileID: 5776474455713028777}
-  fireInterval: 2
+  fireInterval: 0.5
+  exitZoneBufferTime: 0.6
+  health: 100
   player: {fileID: 0}
 --- !u!195 &8981847630413881915
 NavMeshAgent:
@@ -233,6 +240,52 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!61 &7669260957068365271
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183535083029781355}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7530620113143844486
 GameObject:
   m_ObjectHideFlags: 0

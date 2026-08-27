@@ -8,6 +8,8 @@ TagManager:
   - Walls
   - Enemy
   - Borders
+  - Bullets
+  - EnemyBullets
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - Player
   - Dashing
   - Interactable
-  - 
-  - 
+  - Enemies
+  - Post Processing
   - 
   - 
   - 

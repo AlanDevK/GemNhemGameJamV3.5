@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (aimAction != null) aimAction.action.Disable();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (player == null || mainCam == null || aimAction == null) return;
         Vector3 mouseScreenPos = aimAction.action.ReadValue<Vector2>();

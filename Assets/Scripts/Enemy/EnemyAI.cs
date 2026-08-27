@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,17 +20,32 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform[] firePoints;
     [SerializeField] private float fireInterval = 2f;
 
+    [Header("Visibility")]
+    [SerializeField] float exitZoneBufferTime = 0.6f;
+
+    [Header("Stats")]
+    [SerializeField] int health;
+
+    [Header("Damage")]
+    SpriteRenderer sr;
+    Color flashColor = Color.red;
+    [SerializeField] float flashDuration = 0.1f;
+    Color originalColor;
+
     [SerializeField] Transform player;
     private Camera mainCamera;
     private float fireTimer;
     float strafeTimer;
     float strafeDirection = 1f;
+    float exitTimer;
 
     NavMeshAgent agent;
     bool isInCameraView;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
         agent = GetComponent<NavMeshAgent>();
         if (agent!= null)
         {
@@ -52,27 +68,26 @@ public class EnemyAI : MonoBehaviour
     {
         if (player == null || mainCamera == null) return;
 
-        if (agent != null && agent.isOnNavMesh)
+        Vector3 vp = mainCamera.WorldToViewportPoint(transform.position);
+        bool insideEnterBounds = vp.z > 0 && vp.x >= 0.05f && vp.x <= 0.95f && vp.y >= 0.05f && vp.y <= 0.95f;
+        bool outsideExitBounds = vp.z <= 0 || vp.x < -0.15f ||  vp.x > 1.15f || vp.y < -0.15f || vp.y > 1.15f;
+        if (!isInCameraView && insideEnterBounds)
         {
-            agent.SetDestination(player.position);
-        }
-        // Check if enemy is inside the camera view bounds (0 to 1)
-        Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
-        bool currentlyVisible = viewportPos.x >= 0 && viewportPos.x <= 1 && 
-                              viewportPos.y >= 0 && viewportPos.y <= 1 && 
-                              viewportPos.z > 0;
-
-        // Only chase and shoot when visible inside the camera
-        if (currentlyVisible != isInCameraView)
+            isInCameraView = true;
+            exitTimer = 0f;
+            CombatZoneManager.Instance?.RegisterEnemy(this);
+        } else if (isInCameraView && outsideExitBounds)
         {
-            isInCameraView = currentlyVisible;
-            if (isInCameraView)
+            exitTimer += Time.deltaTime;
+            if (exitTimer >= exitZoneBufferTime)
             {
-                CombatZoneManager.Instance?.RegisterEnemy(this);
-            } else {
+                isInCameraView = false;
+                exitTimer = 0f;
                 CombatZoneManager.Instance?.UnregisterEnemy(this);
             }
-
+        } else
+        {
+            exitTimer = 0f;
         }
         HandleMovement();
         if (isInCameraView)
@@ -150,5 +165,30 @@ public class EnemyAI : MonoBehaviour
     void OnDestroy()
     {
         if (CombatZoneManager.Instance != null) CombatZoneManager.Instance.UnregisterEnemy(this);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullets"))
+        {
+            TakeDamage(10);
+        }
+    }
+
+    IEnumerator FlashDamage()
+    {
+        sr.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        sr.color = originalColor;
+    }
+    public void TakeDamage(int damage)
+    {
+        StartCoroutine(FlashDamage());
+        health -= damage;
+        Debug.Log($"I'm hit! I only got {health} left");
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

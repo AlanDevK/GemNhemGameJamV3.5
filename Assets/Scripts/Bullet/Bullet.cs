@@ -15,5 +15,13 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Bullets"))
+        {
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("EnemyBullets"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
