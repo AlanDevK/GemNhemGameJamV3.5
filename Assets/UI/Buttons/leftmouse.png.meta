@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: 8f88dc094a5497d4ca2734ecb87d9b35
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5092706425572533505
+    second: leftmouse_0
+  - first:
+      213: 5162434418152587529
+    second: leftmouse_1
+  - first:
+      213: 8188350757818614089
+    second: leftmouse_2
+  - first:
+      213: -441313865677128761
+    second: leftmouse_3
+  - first:
+      213: -1899756879962790242
+    second: leftmouse_4
+  - first:
+      213: -945836741737703126
+    second: leftmouse_5
+  - first:
+      213: -7443631074649681069
+    second: leftmouse_6
+  - first:
+      213: 5554276675528826485
+    second: leftmouse_7
+  - first:
+      213: 1981015800492572295
+    second: leftmouse_8
+  - first:
+      213: 3508075118152306358
+    second: leftmouse_9
+  - first:
+      213: -3757304310451831207
+    second: leftmouse_10
+  - first:
+      213: 5324942603936804431
+    second: leftmouse_11
+  - first:
+      213: 5541443225828210307
+    second: leftmouse_12
+  - first:
+      213: -704614150181956324
+    second: leftmouse_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: leftmouse_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2399
+        width: 449
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffa566efc721359b0800000000000000
+      internalID: -5092706425572533505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_1
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2629
+        width: 150
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9014c3660c6a4a740800000000000000
+      internalID: 5162434418152587529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_2
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 2629
+        width: 163
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941441861add2a170800000000000000
+      internalID: 8188350757818614089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2269
+        width: 99
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb3cd9906320e9f0800000000000000
+      internalID: -441313865677128761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2152
+        width: 99
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96a63ade25b2a5e0800000000000000
+      internalID: -1899756879962790242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 1202
+        width: 793
+        height: 1312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a291631ae76bfd2f0800000000000000
+      internalID: -945836741737703126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_6
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1735
+        width: 111
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3535274c9f8e2b890800000000000000
+      internalID: -7443631074649681069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_7
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1202
+        width: 548
+        height: 935
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e12256531c41d40800000000000000
+      internalID: 5554276675528826485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_8
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 248
+        width: 1265
+        height: 907
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78ebbcaef5bfd7b10800000000000000
+      internalID: 1981015800492572295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_9
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 657
+        width: 158
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6becadebbbf2fa030800000000000000
+      internalID: 3508075118152306358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_10
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 447
+        width: 158
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e797ef2af5bdbc0800000000000000
+      internalID: -3757304310451831207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_11
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 0
+        width: 261
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e2ff4e51ff5e940800000000000000
+      internalID: 5324942603936804431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_12
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 240
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3863c7a014927ec40800000000000000
+      internalID: 5541443225828210307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leftmouse_13
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 0
+        width: 721
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c15d0b2e925b836f0800000000000000
+      internalID: -704614150181956324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      leftmouse_0: -5092706425572533505
+      leftmouse_1: 5162434418152587529
+      leftmouse_10: -3757304310451831207
+      leftmouse_11: 5324942603936804431
+      leftmouse_12: 5541443225828210307
+      leftmouse_13: -704614150181956324
+      leftmouse_2: 8188350757818614089
+      leftmouse_3: -441313865677128761
+      leftmouse_4: -1899756879962790242
+      leftmouse_5: -945836741737703126
+      leftmouse_6: -7443631074649681069
+      leftmouse_7: 5554276675528826485
+      leftmouse_8: 1981015800492572295
+      leftmouse_9: 3508075118152306358
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

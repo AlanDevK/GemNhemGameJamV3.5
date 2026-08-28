@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void StartTimer()
     {
         elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(elapsedTime / 60);
