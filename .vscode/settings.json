@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "InsurgencyFinal.slnx",
+    "dotnet.defaultSolution": "GemNhemGameJamV3_5.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
