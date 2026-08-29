@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using KinoGlitch;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,28 +42,37 @@ public class PlayerMovement : MonoBehaviour
     public bool isInvincible = false;
     Color flashColor = Color.red;
     float invincibleDuration;
+    [SerializeField] AnalogGlitchController glitchEffect;
     SpriteRenderer sr;
     Color originalColor;
     float flashSpeed = 0.05f;
     float flashTimer = 0f;
+    [SerializeField] Volume globalVolume;
+    ColorAdjustments colorAdjustments;
+    Coroutine glitchCoroutine;
 
     [Header("Input References")]
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference dashActionReference;
     [SerializeField] private InputActionReference fireActionReference;
-    [SerializeField] InputActionReference slowMovementReference;
+    [SerializeField] InputActionReference repairActionReference;
 
-    [SerializeField] int playerHealth = 100;
-    [SerializeField] int healBarAmount = 100;
+    int playerHealth;
+    int playerMaxHealth = 100;
+    public int playerHeal;
+    public int playerMaxHeal = 100;
+    [SerializeField] HealthBarUI healthBar;
+    [SerializeField] RepairUI repairBar;
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 movementInput;
-
+    [SerializeField] EnemySpawn enemySpawn;
     private bool isDashing;
     private float dashTimeLeft;
     private float dashCooldownTimer;
     private float fireTimer;
     bool canShoot = true;
+
 
     private void Awake()
     {
@@ -68,7 +80,16 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         rb.freezeRotation = true; 
+        playerHealth = playerMaxHealth;
+        playerHeal = playerMaxHeal;
+        healthBar.SetMaxHealth(playerMaxHealth);
+        repairBar.SetMaxHeal(playerMaxHeal);
+        glitchEffect.ColorDrift = 0f;
         originalLayerIndex = gameObject.layer;
+        if (globalVolume!= null)
+        {
+            globalVolume.profile.TryGet(out colorAdjustments);
+        }
         impulseSource = GetComponent<CinemachineImpulseSource>();
         originalColor = sr.color;
     }
@@ -77,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveActionReference.action.Enable();
         dashActionReference.action.Enable();
+        repairActionReference.action.Enable();
         if (fireActionReference != null) fireActionReference.action.Enable();
         
         dashActionReference.action.performed += OnDashPerformed;
@@ -85,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         dashActionReference.action.performed -= OnDashPerformed;
-
+        repairActionReference.action.Disable();
         moveActionReference.action.Disable();
         dashActionReference.action.Disable();
         if (fireActionReference != null) fireActionReference.action.Disable();
@@ -108,8 +130,16 @@ public class PlayerMovement : MonoBehaviour
             }
             fireTimer = fireRate;
         }
+        HandleHeal();
     }
 
+    void HandleHeal()
+    {
+        if (repairActionReference.action.WasPressedThisFrame())
+        {
+            Heal();
+        }
+    }
     private void FixedUpdate()
     {
         if (!isKnockedBack && !isDashing)
@@ -217,10 +247,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyBullets") && !isInvincible)
         {
-            TakeDamage(10);
+            TakeDamage(5);
             float force = 25f;
             float stunDuration = 0.2f;
             Knockback(other.transform.position, force, stunDuration);
+        }
+        if (other.gameObject.CompareTag("EnemyTriggers"))
+        {
+            enemySpawn.SpawnEnemies();
         }
     }
 
@@ -259,11 +293,60 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
-        Debug.Log($"The player's hit! I only got {playerHealth} left");
+        healthBar.SetHealth(playerHealth);
+        if (glitchCoroutine != null) StopCoroutine(glitchCoroutine);
+        glitchCoroutine = StartCoroutine(DamageGlitchSpike(damage));
+        UpdateScreenSaturation();
         if (playerHealth <= 0)
         {
             Destroy(gameObject);
             Debug.Log("Game Over!");
+        }
+    }
+
+    public void Heal()
+    {
+        int damage = playerMaxHealth - playerHealth;
+        if (damage > playerHeal)
+        {
+            playerHealth += playerHeal;
+            playerHeal -= playerHeal;
+        }
+        else
+        {
+            playerHealth += damage;
+            playerHeal-=damage;
+        }
+        repairBar.SetHeal(playerHeal);
+        healthBar.SetHealth(playerHealth);
+    }
+    IEnumerator DamageGlitchSpike(int damage)
+    {
+        float intensity = Mathf.Clamp(damage * 0.02f, 0.1f, 1f);
+        glitchEffect.ColorDrift = intensity;
+        float duration = 0.3f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float percentComplete = elapsed / duration;
+            glitchEffect.ColorDrift = Mathf.Lerp(intensity, 0f, percentComplete);
+            yield return null;
+        }
+        glitchEffect.ColorDrift = 0f;
+    }
+
+    void UpdateScreenSaturation()
+    {
+        if (colorAdjustments == null) return;
+        float healthPercent = (float)playerHealth/playerMaxHealth;
+        if (healthPercent <= 0.3f)
+        {
+            float targetSaturation = Mathf.Lerp(-100f, 0f, healthPercent /0.3f);
+            colorAdjustments.saturation.value = targetSaturation;
+        } else
+        {
+            colorAdjustments.saturation.value = 0f;
         }
     }
 }

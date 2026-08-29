@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -33,9 +32,19 @@ public class IntroTutorial : MonoBehaviour
     [SerializeField] GameObject caller1Portrait;
     [SerializeField] GameObject caller2Portrait;
     [SerializeField] GameObject timerGameObject;
+    [SerializeField] GameObject caller1PortraitBorder;
+    [SerializeField] GameObject caller2PortraitBorder;
     [SerializeField] GameObject skipButton;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] Timer timer;
+
+    [Header("Dialogue Portraits")]
+    [SerializeField] GameObject caller1PortraitClosed;
+    [SerializeField] GameObject caller1PortraitOpen;
+    [SerializeField] GameObject caller2PortraitClosed;
+    [SerializeField] GameObject caller2PortraitOpen;
+    [SerializeField] float flapSpeed = 0.1f;
+    [SerializeField] int charactersPerFlap = 2;
 
     [Header("Game Start UI")]
     [SerializeField] GameObject gameStartText;
@@ -54,9 +63,15 @@ public class IntroTutorial : MonoBehaviour
     [Header("Camera")]
     [SerializeField] CinemachineCamera cam;
     int dialoguePhase = 0;
+
+    [SerializeField] GameObject traversalTrigger;
+    [SerializeField] GameObject startTrigger;
+    [SerializeField] AudioClip blipCallSound;
+    AudioSource gameManagerAudio;
     
     // We need a variable to store the exact running coroutine so we can stop it later
     Coroutine flickerCoroutine; 
+    Coroutine portraitRoutine;
 
     void Awake()
     {
@@ -65,6 +80,7 @@ public class IntroTutorial : MonoBehaviour
     
     void Start()
     {
+        gameManagerAudio = GetComponent<AudioSource>();
         dashAction.action.Disable();
         player.enabled = false;
         continueDialogueAction.action.Enable();
@@ -80,6 +96,28 @@ public class IntroTutorial : MonoBehaviour
         flickerCoroutine = StartCoroutine(PressStartFlicker()); 
     }
 
+    void OnEnable()
+    {
+        dialogueSystem.OnSpeakerChanged += HandleSpeakerChanged;
+    }
+    
+    void OnDisable()
+    { 
+        dialogueSystem.OnSpeakerChanged -= HandleSpeakerChanged;
+    }
+
+    void HandleSpeakerChanged(string speakerName)
+    {
+        if (portraitRoutine != null) StopCoroutine(portraitRoutine);
+        if (speakerName == "Pruner")
+        {
+            portraitRoutine = StartCoroutine(AnimatePortrait(caller1PortraitOpen, caller1PortraitClosed));
+        }
+        else
+        {
+            portraitRoutine = StartCoroutine(AnimatePortrait(caller2PortraitOpen, caller2PortraitClosed));
+        }
+    }
     void Update()
     {
         // Check for controller/keyboard input
@@ -121,6 +159,21 @@ public class IntroTutorial : MonoBehaviour
         StartCoroutine(EndTutorialCoroutine());
     }
 
+    IEnumerator AnimatePortrait(GameObject mouthOpen, GameObject mouthClosed)
+    {
+        float syncSpeed = dialogueSystem.textSpeed * charactersPerFlap;
+        while (dialogueSystem.IsTyping)
+        {
+            mouthClosed.SetActive(false);
+            mouthOpen.SetActive(true);
+            yield return new WaitForSeconds(syncSpeed);
+            mouthOpen.SetActive(false);
+            mouthClosed.SetActive(true);
+            yield return new WaitForSeconds(syncSpeed);
+        }
+        mouthOpen.SetActive(false);
+        mouthClosed.SetActive(true);
+    }
     IEnumerator StartTutorialDialogue()
     {
         float timeElapsed = 0f;
@@ -167,6 +220,21 @@ public class IntroTutorial : MonoBehaviour
         caller2Portrait.SetActive(true);
         timerGameObject.SetActive(true);
         skipButton.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        caller1PortraitBorder.SetActive(true);
+        caller2PortraitBorder.SetActive(true);
+        for (int i = 0; i<3; i++)
+        {
+            caller1PortraitClosed.SetActive(true);
+            caller2PortraitClosed.SetActive(true);
+            yield return new WaitForSeconds(0.03f);
+            caller1PortraitClosed.SetActive(false);
+            caller2PortraitClosed.SetActive(false);
+            yield return new WaitForSeconds(0.03f);
+        }
+        caller1PortraitClosed.SetActive(true);
+        caller2PortraitClosed.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
     }
 
     IEnumerator EndTutorialCoroutine()
@@ -186,6 +254,7 @@ public class IntroTutorial : MonoBehaviour
         while (true)
         {
             pressStartText.SetActive(true);
+            gameManagerAudio.PlayOneShot(blipCallSound);
             yield return new WaitForSeconds(0.5f);
             pressStartText.SetActive(false);
             yield return new WaitForSeconds(0.5f);
@@ -210,6 +279,7 @@ public class IntroTutorial : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameStartEntryAnimator.Play("StartTextExit");
         StartCoroutine(FlickeringGameExitBorder());
+        startTrigger.SetActive(true);
         yield return new WaitForSeconds(1f);
         StartCoroutine(FlickeringButtons());
         yield return new WaitForSeconds(10f);
@@ -222,6 +292,8 @@ public class IntroTutorial : MonoBehaviour
         StartCoroutine(FlickeringLeftMouse());
         yield return new WaitForSeconds(10f);
         StartCoroutine(FlickeringLeftMouseExit());
+        yield return new WaitForSeconds(2f);
+        traversalTrigger.SetActive(true);
     }
 
     IEnumerator FlickeringGameStartBorder()

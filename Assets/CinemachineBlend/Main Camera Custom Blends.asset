@@ -13,22 +13,11 @@ MonoBehaviour:
   m_Name: Main Camera Custom Blends
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBlenderSettings
   CustomBlends:
-  - From: CinemachineCamera
-    To: ConfineCamera
-    Blend:
-      Style: 1
-      Time: 2
-      CustomCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-  - From: ConfineCamera
+  - From: '**ANY CAMERA**'
     To: CinemachineCamera
     Blend:
       Style: 1
-      Time: 2
+      Time: 4
       CustomCurve:
         serializedVersion: 2
         m_Curve: []

@@ -33,6 +33,8 @@ public class EnemyAI : MonoBehaviour
     Color originalColor;
 
     [SerializeField] Transform player;
+    PlayerMovement playerMovement;
+    RepairUI repair;
     private Camera mainCamera;
     private float fireTimer;
     float strafeTimer;
@@ -46,6 +48,8 @@ public class EnemyAI : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        repair = FindObjectOfType<RepairUI>();
         agent = GetComponent<NavMeshAgent>();
         if (agent!= null)
         {
@@ -187,8 +191,13 @@ public class EnemyAI : MonoBehaviour
         health -= damage;
         Debug.Log($"I'm hit! I only got {health} left");
         if (health <= 0)
-        {
+        {  
             gameObject.SetActive(false);
+            if (Mathf.Abs(playerMovement.playerHeal - playerMovement.playerMaxHeal)>=5)
+            {
+                playerMovement.playerHeal+=5;
+                repair.SetHeal(playerMovement.playerHeal);
+            }
         }
     }
 }

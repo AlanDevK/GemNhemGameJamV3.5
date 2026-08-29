@@ -3,13 +3,17 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
+    [SerializeField] Slider slider;
     public Image healthFillImage; 
 
-    public void SetHealth(float currentHealth, float maxHealth)
+    public void SetMaxHealth(int health)
     {
-        if (healthFillImage != null)
-        {
-            healthFillImage.fillAmount = currentHealth / maxHealth;
-        }
+        slider.maxValue = health;
+        slider.value = health;
+    }
+
+    public void SetHealth(int health)
+    {
+        slider.value = health;
     }
 }

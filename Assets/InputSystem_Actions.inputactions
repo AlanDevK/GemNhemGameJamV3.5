@@ -52,15 +52,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ability1: TimeStop",
-                    "type": "Button",
-                    "id": "6cb90a2d-b722-47ec-9167-945b1f82aa7e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Aim",
                     "type": "Value",
                     "id": "16af57d6-2902-40e8-b10e-575c56bbb024",
@@ -68,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Repair",
+                    "type": "Button",
+                    "id": "78ddbb10-1969-44f3-bc26-40b3e326e7d8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,23 +172,23 @@
                 },
                 {
                     "name": "",
-                    "id": "89430915-a378-4528-9fef-d6bc96408f55",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Ability1: TimeStop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "93cf1f42-0fc1-4167-87ff-843789934bab",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b2f99ea-597b-44e8-96c3-dc715ba085b8",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Repair",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

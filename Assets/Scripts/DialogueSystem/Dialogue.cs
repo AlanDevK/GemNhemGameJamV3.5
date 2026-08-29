@@ -6,11 +6,17 @@ using System;
 using System.Collections.Generic;
 
 [System.Serializable]
+public struct DialogueLine
+{
+    public string speakerName;
+    [TextArea(3,10)]
+    public string lineText;
+}
+[System.Serializable]
 public struct Conversation
 {
     public string conversationID;
-    [TextArea(3,10)]
-    public string[] lines;
+    public DialogueLine[] lines;
 }
 
 public class Dialogue : MonoBehaviour
@@ -19,7 +25,9 @@ public class Dialogue : MonoBehaviour
     [SerializeField] InputActionReference continueDialogueAction;
     public List<Conversation> sceneDialogues = new List<Conversation>();
     public float textSpeed;
+    public event Action<string> OnSpeakerChanged;
     bool _isPlayingDialogue = false;
+    public bool IsTyping => _isPlayingDialogue;
     [SerializeField] GameObject dialogueArea;
     public event Action OnDialogueComplete;
     bool isDialogueStarted = false;
@@ -29,7 +37,7 @@ public class Dialogue : MonoBehaviour
     int index;
     Coroutine typing;
     Coroutine cursor;
-    string[] currentLines;
+    DialogueLine[] currentLines;
 
     void Start()
     {
@@ -44,6 +52,7 @@ public class Dialogue : MonoBehaviour
             if (_isPlayingDialogue)
             {
                 if (typing != null) StopCoroutine(typing);
+                textComponent.text = currentLines[index].lineText;
                 textComponent.maxVisibleCharacters = textComponent.textInfo.characterCount;
                 _isPlayingDialogue = false;
                 StartBlinkingCursor();
@@ -95,7 +104,8 @@ public class Dialogue : MonoBehaviour
     {
         _isPlayingDialogue = true;
         if (continueCursor != null) continueCursor.SetActive(false);
-        textComponent.text = currentLines[index];
+        OnSpeakerChanged?.Invoke(currentLines[index].speakerName);
+        textComponent.text = currentLines[index].lineText;
         textComponent.maxVisibleCharacters = 0;
         textComponent.ForceMeshUpdate();
         int totalChars = textComponent.textInfo.characterCount;

@@ -1,17 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class PlayerInteractor : MonoBehaviour
 {
     [Header("Input Configuration")]
     [SerializeField] private InputActionReference interactAction;
-    [SerializeField] float interactRange = 2f;
-    [SerializeField] LayerMask interactLayer;
-
-    private List<InteractableObject> objectsInRange = new List<InteractableObject>();
-    private InteractableObject closestObject;
+    
+    // We only track the object we are currently standing next to
+    private InteractableObject currentInteractable;
 
     private void OnEnable()
     {
@@ -31,48 +27,36 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (interactAction.action.IsPressed())
-        {
-            Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange);
-            foreach (Collider2D collider in colliderArray)
-            {
-                if (collider.TryGetComponent(out InteractableObject interactableObject)) interactableObject.Interact();
-            }
-        }
-    }
-
-    public InteractableObject GetInteractableObject()
-    {
-        Collider2D interactableCollider = Physics2D.OverlapCircle(transform.position, interactRange,interactLayer);
-        if (interactableCollider.TryGetComponent(out InteractableObject interactableObject)) return interactableObject;
-        return null;
-    }
-
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // TryGetComponent already gives you the reference, no need to call GetComponent again!
         if (collision.TryGetComponent(out InteractableObject interactableObject))
         {
-            collision.gameObject.GetComponent<InteractableObject>().interactionButton.Show();
+            currentInteractable = interactableObject;
+            currentInteractable.interactionButton.Show();
         }
     }
 
-    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out InteractableObject interactableObject))
         {
-            collision.gameObject.GetComponent<InteractableObject>().interactionButton.Hide();
+            interactableObject.interactionButton.Hide();
+            
+            // Clear the reference when we walk away
+            if (currentInteractable == interactableObject)
+            {
+                currentInteractable = null;
+            }
         }
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (closestObject != null)
+        // Now this will actually work when the button is pressed once
+        if (currentInteractable != null)
         {
-            closestObject.Interact();
+            currentInteractable.Interact();
         }
     }
 }
